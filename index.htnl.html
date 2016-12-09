@@ -1,0 +1,58 @@
+<!DOCTYPE html><html>
+  <head>
+    <meta charset="utf-8" />
+    <title>React Tutorial</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script type="text/babel">
+       var TestComponent= React.createClass({
+          handleClick: function(ev){
+            var e = ReactDOM.findDOMNode( this.refs.tip );
+            if (e.style.display === 'none') {
+              e.style.display = 'inline'
+            }else{
+              e.style.display = 'none'
+            }
+            return false;
+          },
+          render: function(){
+            return (
+              <div>
+                <button onClick={this.handleClick}>显示|隐藏</button><span ref="tip">测试点击</span>
+              </div>
+            )
+          }
+       })
+
+        var TestInputComponent = React.createClass({
+          getInitialState: function(){
+            return {
+              inputContent: ""
+            }
+          },
+          changeHandle: function(ev){
+            this.setState({
+              inputContent: ev.target.value
+            })
+            return false;
+          },
+          render: function(){
+            return (
+              <div>
+                <input type="text" onChange={this.changeHandle}/><span>{this.state.inputContent}</span>
+              </div>
+            )
+          }
+       })
+        ReactDOM.render(<div>
+          <TestComponent/>
+          <TestInputComponent/>
+          </div>
+          ,document.getElementById('content'))
+    </script>
+  </body>
+</html>
