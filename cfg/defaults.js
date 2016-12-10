@@ -62,7 +62,7 @@ function getDefaultModules() {
 
 module.exports = {
   srcPath: srcPath,
-  publicPath: 'assets/',
+  publicPath: './assets/', //本地用 “/assets/” github 用相对路径"assets/"
   port: dfltPort,
   getDefaultModules: getDefaultModules
 };
